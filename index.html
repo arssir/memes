@@ -7,14 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+
+        @media screen and (max-width : 600px) {
+            img{
+                height: unset !important;
+                width: 100%;
+            }
+            button{
+                width: 100% !important;
+            }
+        }
         img {
-            height: 80%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
+           
+           
             border: 2px solid rgb(196, 225, 255);
-            
+            height: 70vh;
+
         }
 
         body{
@@ -22,11 +30,10 @@
         }
         h1{
             color: white;
-            position: absolute;
-            top: 0px;
-        }
+           
+           }
         button{
-            position: absolute;
+            position: fixed;
             bottom: 0px;
             left: 50%;
             transform: translate(-50%);
@@ -38,16 +45,24 @@
             font-size: 1.25rem;
             font-family: cursive;
         }
+        div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body>
 
+    <div>
 
-    <h1 id="title"></h1>
+        <h1 id="title"></h1>
+        <img src="" id="meme" alt="Loading">
+    </div>
+  
     <button onclick="send()">NEXT MEME</button>
-    <img src="" id="meme" alt="Loading">
-
 
     <script>
 
