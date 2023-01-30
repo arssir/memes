@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 2px solid rgb(196, 225, 255);
+            
+        }
+
+        body{
+            background-color: black;
+        }
+        h1{
+            color: white;
+            position: absolute;
+            top: 0px;
+        }
+        button{
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translate(-50%);
+            height: 60px;
+            z-index: 1;
+            width:50%;
+            background-color: rgb(0, 42, 255);
+            color: white;
+            font-size: 1.25rem;
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h1 id="title"></h1>
+    <button onclick="send()">NEXT MEME</button>
+    <img src="" id="meme" alt="Loading">
+
+
+    <script>
+
+
+
+        const meme = document.getElementById("meme");
+        const title = document.getElementById("title");
+
+        let req = new XMLHttpRequest();
+        const url = "https://meme-api.com/gimme/wholesomememes";
+        // const url = "https://meme-api.com/gimme/marvelmemes";
+
+
+        req.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let arr = JSON.parse(this.responseText);
+                handleReq(arr);
+            }
+        }
+
+        send();
+
+        function send() {
+            req.open("GET", url, true);
+            req.send();
+        }
+        function handleReq(arr) {
+            title.innerHTML = arr["title"];
+            let preview = arr["preview"];
+
+            meme.src = preview[preview.length - 1];
+        }
+
+
+    </script>
+
+</body>
+
+</html>
