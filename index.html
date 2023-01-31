@@ -6,63 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
 
-        @media screen and (max-width : 600px) {
-            img{
-                height: unset !important;
-                width: 100%;
-            }
-            button{
-                width: 100% !important;
-            }
-        }
-        img {
-           
-           
-            border: 2px solid rgb(196, 225, 255);
-            height: 70vh;
-
-        }
-
-        body{
-            background-color: black;
-        }
-        h1{
-            color: white;
-           
-           }
-        button{
-            position: fixed;
-            bottom: 0px;
-            left: 50%;
-            transform: translate(-50%);
-            height: 60px;
-            z-index: 1;
-            width:50%;
-            background-color: rgb(0, 42, 255);
-            color: white;
-            font-size: 1.25rem;
-            font-family: cursive;
-        }
-        div{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+  
 </head>
 
 <body>
 
-    <div>
+    <div class="container">
+        <div class="top-nav">
 
-        <h1 id="title"></h1>
-        <img src="" id="meme" alt="Loading">
+            <h1 id="title" class="title"></h1>
+        </div>
+       
+        <div class="meme" id="meme"></div>
+
+        <button onclick="send()" class="next-btn">NEXT MEME</button>
     </div>
+
+
   
-    <button onclick="send()">NEXT MEME</button>
 
     <script>
 
@@ -93,7 +56,9 @@
             title.innerHTML = arr["title"];
             let preview = arr["preview"];
 
-            meme.src = preview[preview.length - 1];
+            let url = preview[preview.length - 1];
+            meme.style = "background-image : url('"+url+"');";
+            
         }
 
 
